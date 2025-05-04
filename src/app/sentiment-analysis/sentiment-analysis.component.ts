@@ -38,7 +38,7 @@ export class SentimentAnalysisComponent {
     console.log(this.userInput);
     this.http.post(this.inputUrl, this.userInput).subscribe( {
       next: (response) => {
-        console.log(`User input: ${this.userInput.comment} successfully sent to the server: ${response}`);
+        console.log(`User input: ${this.userInput.comment} successfully sent to the server: ${response.toString}`);
       },
       error: (error) => {
         console.error('Error sending user input to the server:', error);
