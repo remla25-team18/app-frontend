@@ -17,4 +17,9 @@
     <!-- <app-feedback *ngIf="!loading" [feedback]="modelOutput"></app-feedback> -->
     <app-feedback [feedback]="modelOutput"></app-feedback>
   </section>
+  <section class="judgment-section">
+    <h2>Is the analysis correct?</h2>
+    <button class="true-btn" (click)="submitJudgment(true)">True</button>
+    <button class="false-btn" (click)="submitJudgment(false)">False</button>
+  </section>
 </div>

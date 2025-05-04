@@ -50,8 +50,9 @@ export class SentimentAnalysisComponent {
   // Receiving Responce
   outputUrl = "http://localhost:3000/modelOutput";
   modelOutput: ModelOutput = {
-     analysis: "default",
-     version: "1.0.0"
+    analysis: "default",
+    app_version: "1.0.0",
+    model_version: "1.0.0",
   };
   loading: boolean = true;
 
@@ -81,5 +82,18 @@ export class SentimentAnalysisComponent {
     this.getResponce();
   }
 
-  // Background animation
+  // User feedback
+  judgmentUrl = "http://localhost:3000/judgment";
+  submitJudgment(isCorrect: boolean): void {
+    const judgmentPayload = { isCorrect }; // Wrap the boolean in an object
+    console.log(judgmentPayload);
+    this.http.post(this.judgmentUrl, judgmentPayload).subscribe({
+      next: (response) => {
+        console.log('Judgment submitted successfully:', response);
+      },
+      error: (error) => {
+        console.error('Error submitting judgment:', error);
+      }
+    });
+  }
 }

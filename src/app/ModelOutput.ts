@@ -1,5 +1,6 @@
 
 export interface ModelOutput {
     analysis: string;
-    version: string;
+    app_version: string;
+    model_version: string;
 }
