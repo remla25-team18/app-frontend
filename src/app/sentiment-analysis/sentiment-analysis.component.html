@@ -7,6 +7,9 @@
     <button class="primary" type="button">Analyze</button>
   </section>
   <section class="results">
+    <!-- TODO: Add loading display -->
+    <!-- <div *ngIf="loading">Loading...</div> -->
+    <!-- <app-feedback *ngIf="!loading" [feedback]="modelOutput"></app-feedback> -->
     <app-feedback [feedback]="modelOutput"></app-feedback>
   </section>
 </div>
