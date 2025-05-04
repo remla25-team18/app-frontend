@@ -9,7 +9,5 @@ import { ModelOutput } from '../ModelOutput';
   styleUrl: './feedback.component.css'
 })
 export class FeedbackComponent {
-  @Input() feedback!: ModelOutput;
-  // variable: dataType
-
+  @Input() feedback!: ModelOutput; // variable: dataType
 }

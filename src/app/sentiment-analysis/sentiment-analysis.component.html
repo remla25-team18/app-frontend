@@ -3,8 +3,10 @@
     <h1> Intro</h1>
   </section>
   <section class="search-section">
-    <input type="text" placeholder="Input" />
-    <button class="primary" type="button">Analyze</button>
+    <!-- For Debug: Bind the update Function so that interactive input is logged in console -->
+    <!-- <input type="text" placeholder="User Comment" [(ngModel)]="userInput" (keyup)="updateInput()"/> -->
+    <input type="text" placeholder="Please type user comment here." [(ngModel)]="userInput.comment"/>
+    <button class="primary" type="button" (click)="submitAction()">Analyze</button>
   </section>
   <section class="results">
     <!-- TODO: Add loading display -->
