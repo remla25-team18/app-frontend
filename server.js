@@ -41,7 +41,7 @@ app.post('/updateModelOutput', (req, res) => {
 
 // GET endpoint to display on the front end
 let modelOutput = {
-    analysis: "neutral",
+    analysis: "default",
     version: "1.0.0"
 };
 app.get('/modelOutput', (req, res) => {

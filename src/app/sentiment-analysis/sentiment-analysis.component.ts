@@ -80,4 +80,6 @@ export class SentimentAnalysisComponent {
   ngOnInit(): void {
     this.getResponce();
   }
+
+  // Background animation
 }
