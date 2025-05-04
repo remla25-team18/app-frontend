@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="bg"></div>
+  <div class="bg bg2"></div>
+  <div class="bg bg3"></div>
+  <div>
+    <h1 class="animate__animated animate__bounce">Comment Sentiment Analysis</h1>
+  </div>
+  <section class="search-section">
+    <!-- For Debug: Bind the update Function so that interactive input is logged in console -->
+    <!-- <input type="text" placeholder="User Comment" [(ngModel)]="userInput" (keyup)="updateInput()"/> -->
+    <input type="text" placeholder="Please type user comment here." [(ngModel)]="userInput.comment"/>
+    <button class="primary" type="button" (click)="submitAction()">Analyze</button>
+  </section>
+  <section class="results">
+    <!-- TODO: Add loading display -->
+    <!-- <div *ngIf="loading">Loading...</div> -->
+    <!-- <app-feedback *ngIf="!loading" [feedback]="modelOutput"></app-feedback> -->
+    <app-feedback [feedback]="modelOutput"></app-feedback>
+  </section>
+  <section class="judgment-section">
+    <h2>Is the analysis correct?</h2>
+    <button class="true-btn" (click)="submitJudgment(true)">True</button>
+    <button class="false-btn" (click)="submitJudgment(false)">False</button>
+  </section>
+</div>
