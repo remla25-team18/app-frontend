@@ -33,53 +33,23 @@ export class SentimentAnalysisComponent {
   // Submit User Input
   private http = inject(HttpClient);
   inputUrl = "http://localhost:3000/userInput";
+  modelOutput: ModelOutput = {
+    analysis: "default",
+    app_version: "0.0.0",
+    model_version: "0.0.0",
+  };
 
   submitAction(): void {
     console.log(this.userInput);
-    this.http.post(this.inputUrl, this.userInput).subscribe( {
-      next: (response) => {
-        console.log(`User input: ${this.userInput.comment} successfully sent to the server: ${response.toString}`);
-      },
-      error: (error) => {
-        console.error('Error sending user input to the server:', error);
-      },
-    })
-  }
 
+    // Post the inputresponse
+    this.http.post<{ label: string, model_version: string }>(this.inputUrl, { text: this.userInput})
+      .subscribe(response => {
+        this.modelOutput.analysis = response.label;
+        this.modelOutput.model_version = response.model_version;
 
-  // Receiving Responce
-  outputUrl = "http://localhost:3000/modelOutput";
-  modelOutput: ModelOutput = {
-    analysis: "default",
-    app_version: "1.0.0",
-    model_version: "1.0.0",
-  };
-  loading: boolean = true;
-
-  getResponce(): void {
-    this.loading = true;
-
-    this.http.get<ModelOutput>(this.outputUrl).subscribe({
-      next: (receivedData) => {
-        this.loading = false; // Set loading to false after receiving the response
-
-        console.log(this.modelOutput);
-        if (receivedData) {
-          this.modelOutput = receivedData;
-          console.log(`Successfully set modelOutput to be ${receivedData.analysis}`);
-        } else {
-          console.error('No data received from the model output.');
-        }
-      },
-      error: (error) => {
-        console.error('Error fetching model output:', error);
-        this.loading = false; 
-      },
+        console.log(this.modelOutput.analysis, this.modelOutput.model_version);
     });
-  }
-
-  ngOnInit(): void {
-    this.getResponce();
   }
 
   // User feedback
