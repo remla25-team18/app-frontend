@@ -87,6 +87,16 @@ export class SentimentAnalysisComponent {
   submitJudgment(isCorrect: boolean): void {
     const judgmentPayload = { isCorrect }; // Wrap the boolean in an object
     console.log(judgmentPayload);
+
+    // Pop out a widget telling user we have received the response;
+    if (isCorrect) {
+      alert("Thanks for feedback, we are happy we get you :)");
+    } else {
+      alert("Oops, sorry! We'll do better next time ;)");
+    }
+
+
+    // Post the feedback to app-service
     this.http.post(this.judgmentUrl, judgmentPayload).subscribe({
       next: (response) => {
         console.log('Judgment submitted successfully:', response);
